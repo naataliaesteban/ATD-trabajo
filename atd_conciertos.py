@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Jan 31 12:27:35 2026
-
-@author: User
+@author: qrnnx
 """
 
 from selenium import webdriver
@@ -90,4 +88,5 @@ def main():
         driver.quit()
 
 if __name__ == "__main__":
+
     main()
