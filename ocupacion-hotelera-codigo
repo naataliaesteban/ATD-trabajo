@@ -1,0 +1,45 @@
+import requests
+import csv
+import json
+from bs4 import BeautifulSoup
+from datetime import datetime
+
+url = "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/2074"
+
+respuesta = requests.get(url)
+respuesta.raise_for_status()
+
+soup = BeautifulSoup(response.text, "html.parser")
+data = json.loads(soup.text)
+
+filas = []
+
+for item in data:
+    nombre = item.get("Nombre", "")
+
+    partes = [p.strip() for p in nombre.split(".") if p.strip()]
+    territorio = partes[0] if partes else ""
+
+    tipo = ""
+    if "Viajeros" in nombre:
+        tipo = "viajeros"
+    elif "Pernoctaciones" in nombre:
+        tipo = "pernoctaciones"
+
+    for d in item.get("Data", []):
+        fecha = datetime.utcfromtimestamp(
+            d.get("Fecha") / 1000
+        ).strftime("%Y-%m")
+
+        filas.append([
+            territorio,
+            territorio if len(partes) > 1 else "",
+            tipo,
+            fecha,
+            d.get("Valor")
+        ])
+
+with open("ocupacion_hotelera_ine_2074.csv", "w", newline="", encoding="utf-8") as f:
+    writer = csv.writer(f)
+    writer.writerow(["territorio", "provincia", "tipo", "fecha", "valor"])
+    writer.writerows(filas)
