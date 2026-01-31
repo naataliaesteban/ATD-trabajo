@@ -2,7 +2,7 @@
 """
 Created on Thu Jan 22 16:54:10 2026
 
-@author: 46mjn
+@author: naataliaesteban
 """
 
 import requests
@@ -71,4 +71,5 @@ media_inv = procesar_y_mostrar(invierno_lugo, " INVIERNO")
 media_ver = procesar_y_mostrar(verano_lugo, "VERANO")
 
 if media_inv and media_ver:
+
     print(f"\n MEDIAS LUGO: Invierno {media_inv:.2f}°C | Verano {media_ver:.2f}°C")
