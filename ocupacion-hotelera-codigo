@@ -25,21 +25,16 @@ for item in data:
         tipo = "viajeros"
     elif "Pernoctaciones" in nombre:
         tipo = "pernoctaciones"
+    else:
+        tipo = ""
 
     for d in item.get("Data", []):
-        fecha = datetime.utcfromtimestamp(
-            d.get("Fecha") / 1000
-        ).strftime("%Y-%m")
+        fecha = datetime.utcfromtimestamp(d.get("Fecha") / 1000).strftime("%Y-%m")
 
-        filas.append([
-            territorio,
-            territorio if len(partes) > 1 else "",
-            tipo,
-            fecha,
-            d.get("Valor")
-        ])
+        filas.append([territorio, territorio if len(partes) > 1 else "", tipo, fecha, d.get("Valor")])
 
 with open("ocupacion_hotelera_ine_2074.csv", "w", newline="", encoding="utf-8") as f:
     writer = csv.writer(f)
     writer.writerow(["territorio", "provincia", "tipo", "fecha", "valor"])
-    writer.writerows(filas)
+    for fila in filas:
+        writer.writerows(filas)
