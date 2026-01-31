@@ -2,7 +2,7 @@
 """
 Created on Thu Jan 22 17:00:42 2026
 
-@author: 46mjn
+@author: naataliaesteban
 """
 
 import requests
@@ -70,9 +70,7 @@ time.sleep(10)
 print(" Obteniendo Verano (Barcelona)...")
 verano_bcn = obtener_clima_ciudad("2024-07-01", "2024-07-31", ID_BARCELONA)
 
-# =============================
-# MOSTRAR RESULTADOS
-# =============================
+
 print("\n  INVIERNO (ENERO) - BARCELONA")
 for d in invierno_bcn:
     print(d)
@@ -81,9 +79,7 @@ print("\n  VERANO (JULIO) - BARCELONA")
 for d in verano_bcn:
     print(d)
 
-# =============================
-# FUNCIÓN EXTRA: MEDIA TEMPERATURA
-# =============================
+
 def media_temperatura(datos):
     temperaturas = []
     for d in datos:
@@ -102,4 +98,5 @@ def media_temperatura(datos):
 if invierno_bcn and verano_bcn:
     print("\n TEMPERATURAS MEDIAS EN BARCELONA")
     print(f"Media Invierno: {media_temperatura(invierno_bcn):.2f} °C")
+
     print(f"Media Verano: {media_temperatura(verano_bcn):.2f} °C")
