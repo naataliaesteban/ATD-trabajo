@@ -2,7 +2,7 @@
 """
 Created on Thu Jan 22 16:17:57 2026
 
-@author: 46mjn
+@author: naataliaesteban
 """
 import requests
 import time
@@ -59,18 +59,14 @@ def obtener_clima_ciudad(fecha_ini, fecha_fin, id_estacion):
 
 ID_SEVILLA = "5783"  # Sevilla Aeropuerto
 
-# -----------------------------
-# INVIERNO (ENERO)
-# -----------------------------
+
 invierno_sevilla = obtener_clima_ciudad(
     fecha_ini="2024-01-01",
     fecha_fin="2024-01-31",
     id_estacion=ID_SEVILLA
 )
 
-# -----------------------------
-# VERANO (JULIO)
-# -----------------------------
+
 verano_sevilla = obtener_clima_ciudad(
     fecha_ini="2024-07-01",
     fecha_fin="2024-07-31",
@@ -97,3 +93,4 @@ def media_temperatura(datos):
 print("\n TEMPERATURAS MEDIAS")
 print("Invierno:", media_temperatura(invierno_sevilla))
 print("Verano:", media_temperatura(verano_sevilla))
+
