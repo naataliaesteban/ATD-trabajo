@@ -2,7 +2,7 @@
 """
 Created on Sat Jan 31 12:58:21 2026
 
-@author: 46mjn
+@author: naataliaesteban
 """
 
 
@@ -59,18 +59,14 @@ def obtener_clima_ciudad(fecha_ini, fecha_fin, id_estacion):
 
 ID_MADRID = "3195"  # Madrid Retiro
 
-# -----------------------------
-# INVIERNO (ENERO)
-# -----------------------------
+
 invierno_madrid = obtener_clima_ciudad(
     fecha_ini="2024-01-01",
     fecha_fin="2024-01-31",
     id_estacion=ID_MADRID
 )
 
-# -----------------------------
-# VERANO (JULIO)
-# -----------------------------
+
 verano_madrid = obtener_clima_ciudad(
     fecha_ini="2024-07-01",
     fecha_fin="2024-07-31",
@@ -97,3 +93,4 @@ def media_temperatura(datos):
 print("\n TEMPERATURAS MEDIAS - MADRID")
 print("Invierno:", media_temperatura(invierno_madrid))
 print("Verano:", media_temperatura(verano_madrid))
+
