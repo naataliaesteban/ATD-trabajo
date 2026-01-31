@@ -2,7 +2,7 @@
 """
 Created on Thu Jan 22 16:42:11 2026
 
-@author: 46mjn
+@author: naataliaesteban
 """
 
 import requests
@@ -24,7 +24,6 @@ def obtener_clima_ciudad(fecha_ini, fecha_fin, id_estacion):
     headers = {'api_key': api_key}
 
     try:
-        # PASO 1: pedir permiso a la API
         res = requests.get(url_pedido, headers=headers)
         res_json = res.json()
 
@@ -35,11 +34,11 @@ def obtener_clima_ciudad(fecha_ini, fecha_fin, id_estacion):
                 print("El servidor aún está procesando los datos.")
                 return []
 
-            # PASO 2: descargar datos reales
+            
             time.sleep(2)
             datos_finales = requests.get(url_datos).json()
 
-            # PASO 3: limpiar datos
+            
             limpios = []
             for d in datos_finales:
                 limpios.append({
@@ -60,18 +59,14 @@ def obtener_clima_ciudad(fecha_ini, fecha_fin, id_estacion):
 
 ID_VALENCIA = "8416"  # Valencia (Viveros)
 
-# -----------------------------
-# INVIERNO (ENERO)
-# -----------------------------
+
 invierno_valencia = obtener_clima_ciudad(
     fecha_ini="2024-01-01",
     fecha_fin="2024-01-31",
     id_estacion=ID_VALENCIA
 )
 
-# -----------------------------
-# VERANO (JULIO)
-# -----------------------------
+
 verano_valencia = obtener_clima_ciudad(
     fecha_ini="2024-07-01",
     fecha_fin="2024-07-31",
@@ -79,11 +74,11 @@ verano_valencia = obtener_clima_ciudad(
 )
 
 
-print("❄️ INVIERNO (ENERO) - VALENCIA")
+print(" INVIERNO (ENERO) - VALENCIA")
 for d in invierno_valencia:
     print(d)
 
-print("\n☀️ VERANO (JULIO) - VALENCIA")
+print("\n VERANO (JULIO) - VALENCIA")
 for d in verano_valencia:
     print(d)
 
@@ -101,5 +96,6 @@ def media_temperatura(datos):
 print("\n TEMPERATURAS MEDIAS EN VALENCIA")
 print(f"Media Invierno: {media_temperatura(invierno_valencia):.2f} °C")
 print(f"Media Verano: {media_temperatura(verano_valencia):.2f} °C")
+
 
 
