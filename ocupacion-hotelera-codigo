@@ -10,7 +10,7 @@ respuesta = requests.get(url)
 respuesta.raise_for_status()
 
 soup = BeautifulSoup(respuesta.text, "html.parser")
-data = json.loads(soup.text)
+data = respuesta.json()
 
 filas = []
 
